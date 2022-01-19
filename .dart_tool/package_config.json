@@ -92,6 +92,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "simple_animations",
+      "rootUri": "file:///Users/prabhneetnarula/Development/SDKs/Flutter/.pub-cache/hosted/pub.dartlang.org/simple_animations-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/prabhneetnarula/Development/SDKs/Flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -152,7 +158,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-01-18T03:14:21.864115Z",
+  "generated": "2022-01-19T01:42:40.927298Z",
   "generator": "pub",
   "generatorVersion": "2.15.0"
 }

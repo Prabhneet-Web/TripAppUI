@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trip_app_ui/animation/fadeAnimation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -7,7 +8,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   late PageController _pageController;
 
   void _onScroll() {}
@@ -16,6 +18,12 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     _pageController = PageController(initialPage: 0)..addListener(_onScroll);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -93,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
                   Text("/ ${totalPage.toString()}",
-                      style: TextStyle(color: Colors.white, fontSize: 15))
+                      style: const TextStyle(color: Colors.white, fontSize: 15))
                 ],
               ),
               Expanded(
@@ -101,54 +109,56 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold),
+                    FadeAnimation(Text(title,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 46,
+                            fontWeight: FontWeight.bold))),
+                    const SizedBox(height: 15),
+                    FadeAnimation(
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 5),
+                            child: const Icon(Icons.star,
+                                color: Colors.yellow, size: 15),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 5),
+                            child: const Icon(Icons.star,
+                                color: Colors.yellow, size: 15),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 5),
+                            child: const Icon(Icons.star,
+                                color: Colors.yellow, size: 15),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 5),
+                            child: const Icon(Icons.star,
+                                color: Colors.yellow, size: 15),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 5),
+                            child: const Icon(Icons.star,
+                                color: Colors.grey, size: 15),
+                          ),
+                          const Text("4.0",
+                              style: TextStyle(color: Colors.white70)),
+                          const Text("(2300)",
+                              style: TextStyle(
+                                  color: Colors.white38, fontSize: 12))
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 5),
-                          child: const Icon(Icons.star,
-                              color: Colors.yellow, size: 15),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(right: 5),
-                          child: const Icon(Icons.star,
-                              color: Colors.yellow, size: 15),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(right: 5),
-                          child: const Icon(Icons.star,
-                              color: Colors.yellow, size: 15),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(right: 5),
-                          child: const Icon(Icons.star,
-                              color: Colors.yellow, size: 15),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(right: 5),
-                          child: const Icon(Icons.star,
-                              color: Colors.grey, size: 15),
-                        ),
-                        const Text("4.0",
-                            style: TextStyle(color: Colors.white70)),
-                        const Text("(2300)",
-                            style:
-                                TextStyle(color: Colors.white38, fontSize: 12))
-                      ],
-                    ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
                     Padding(
-                      padding: const EdgeInsets.only(right: 50.0),
-                      child: Text(
-                        description,
-                        style: const TextStyle(color: Colors.white30),
+                      padding: const EdgeInsets.only(right: 50.0, bottom: 10),
+                      child: FadeAnimation(
+                        Text(
+                          description,
+                          style: const TextStyle(color: Colors.white30),
+                        ),
                       ),
                     ),
                   ]))
