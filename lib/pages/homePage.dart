@@ -18,23 +18,49 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: PageView(
       controller: _pageController,
       children: [
         makePage(
-            image: 'lib/assets/images/one.jpeg', title: "", description: ""),
-        makePage(image: 'lib/assets/images/two.jpeg', title: ""),
-        makePage(image: 'lib/assets/images/three.jpeg', title: ""),
-        makePage(image: 'lib/assets/images/four.jpeg', title: ""),
-        makePage(image: 'lib/assets/images/five.jpeg', title: "")
+            image: 'lib/assets/images/one.jpeg',
+            title: "Taj Mahal",
+            page: "1",
+            description:
+                "An immense mausoleum of white marble, built in Agra between 1631 and 1648 by order of the Mughal emperor Shah Jahan in memory of his favourite wife, the Taj Mahal is the jewel of Muslim art in India and one of the universally admired masterpieces of the world's heritage."),
+        makePage(
+            image: 'lib/assets/images/two.jpeg',
+            title: "Golden Temple",
+            page: "2",
+            description:
+                "The Golden temple is famous for its full golden dome, it is one of the most sacred pilgrim spots for Sikhs. The Mandir is built on a 67-ft square of marble and is a two storied structure. Maharaja Ranjit Singh had the upper half of the building built with approximately 400 kg of gold leaf."),
+        makePage(
+            image: 'lib/assets/images/three.webp',
+            title: "Qutub Minar",
+            page: "3",
+            description:
+                "The Qutub Minar is a towering 73 meter high tower built by Qutub-ud-Din Aibak in 1193. The tower was built to celebrate Muslim dominance in Delhi after the defeat of Delhi's last Hindu ruler. This tower is the highest tower in India, complete with five storeys and projecting balconies."),
+        makePage(
+            image: 'lib/assets/images/four.jpeg',
+            title: "Akshardham",
+            page: "4",
+            description:
+                "Swaminarayan Akshardham is a Hindu temple, and spiritual-cultural campus in Delhi, India. The temple is close to the border with Noida. Also referred to as Akshardham Temple or Akshardham Delhi, the complex displays millennia of traditional and modern Hindu culture, spirituality, and architecture."),
+        makePage(
+            image: 'lib/assets/images/five.jpeg',
+            title: "Lotus Temple",
+            page: "5",
+            description:
+                "The Lotus Temple, located in Delhi, India, is a Baháʼí House of Worship that was dedicated in December 1986. Notable for its flowerlike shape, it has become a prominent attraction in the city. Like all Houses of Worship, the Lotus Temple is open to all, regardless of religion or any other qualification.")
       ],
     ));
   }
 
-  Widget makePage({image, title, description}) {
+  Widget makePage({image, title, description, page}) {
+    int totalPage = 4;
+
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
@@ -60,13 +86,13 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.baseline,
                 textBaseline: TextBaseline.alphabetic,
-                children: const [
-                  Text("1",
-                      style: TextStyle(
+                children: [
+                  Text(page,
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
-                  Text("/4",
+                  Text("/ ${totalPage.toString()}",
                       style: TextStyle(color: Colors.white, fontSize: 15))
                 ],
               ),
@@ -118,7 +144,13 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    Text(description),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 50.0),
+                      child: Text(
+                        description,
+                        style: const TextStyle(color: Colors.white30),
+                      ),
+                    ),
                   ]))
             ],
           ),
