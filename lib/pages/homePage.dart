@@ -18,22 +18,23 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Scaffold(
         body: PageView(
       controller: _pageController,
       children: [
-        makePage(image: 'lib/assets/images/one.jpg'),
-        makePage(image: 'lib/assets/images/two.jpeg'),
-        makePage(image: 'lib/assets/images/three.jpeg'),
-        makePage(image: 'lib/assets/images/four.jpeg'),
-        makePage(image: 'lib/assets/images/five.jpeg')
+        makePage(
+            image: 'lib/assets/images/one.jpeg', title: "", description: ""),
+        makePage(image: 'lib/assets/images/two.jpeg', title: ""),
+        makePage(image: 'lib/assets/images/three.jpeg', title: ""),
+        makePage(image: 'lib/assets/images/four.jpeg', title: ""),
+        makePage(image: 'lib/assets/images/five.jpeg', title: "")
       ],
     ));
   }
 
-  Widget makePage({image}) {
+  Widget makePage({image, title, description}) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 40),
               Row(
@@ -59,21 +61,65 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.baseline,
                 textBaseline: TextBaseline.alphabetic,
                 children: const [
-                  Text(
-                    "1",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "/4",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  )
+                  Text("1",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold)),
+                  Text("/4",
+                      style: TextStyle(color: Colors.white, fontSize: 15))
                 ],
-              )
+              ),
+              Expanded(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 5),
+                          child: const Icon(Icons.star,
+                              color: Colors.yellow, size: 15),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 5),
+                          child: const Icon(Icons.star,
+                              color: Colors.yellow, size: 15),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 5),
+                          child: const Icon(Icons.star,
+                              color: Colors.yellow, size: 15),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 5),
+                          child: const Icon(Icons.star,
+                              color: Colors.yellow, size: 15),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 5),
+                          child: const Icon(Icons.star,
+                              color: Colors.grey, size: 15),
+                        ),
+                        const Text("4.0",
+                            style: TextStyle(color: Colors.white70)),
+                        const Text("(2300)",
+                            style:
+                                TextStyle(color: Colors.white38, fontSize: 12))
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Text(description),
+                  ]))
             ],
           ),
         ),
